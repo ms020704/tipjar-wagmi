@@ -74,12 +74,12 @@ export default function Home() {
     try {
       return BigInt(tipIndexInput === '' ? '0' : tipIndexInput)
     } catch {
-      return 0n
+      return BigInt(0)
     }
   }, [tipIndexInput])
 
   const canReadTip = useMemo(() => {
-    const count = Number(tipsCount ?? 0n)
+    const count = Number(tipsCount ?? BigInt(0))
     const idx = Number(tipIndexInput)
     return Number.isInteger(idx) && idx >= 0 && idx < count
   }, [tipIndexInput, tipsCount])
